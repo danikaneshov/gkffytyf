@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Физика — тесты (из файла)</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg"></div>
+
+  <header class="topbar glass">
+    <div class="brand">
+      <div class="logo">Φ</div>
+      <div>
+        <div class="title">Тесты по общей физике</div>
+        <div class="subtitle">Практика по вопросам из файла (включая картинки)</div>
+      </div>
+    </div>
+
+    <nav class="tabs">
+      <button class="tab active" data-view="quiz">Тест</button>
+      <button class="tab" data-view="pages">Оригинал (страницы)</button>
+    </nav>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar glass">
+      <div class="section">
+        <div class="label">Поиск</div>
+        <input id="search" class="input" placeholder="Например: закон Ома, Бернулли, энергия..." />
+      </div>
+
+      <div class="section">
+        <div class="label">Фильтр</div>
+        <select id="pageFilter" class="input">
+          <option value="all">Все страницы</option>
+        </select>
+        <label class="check">
+          <input id="onlyWithImages" type="checkbox" />
+          Только вопросы с картинками
+        </label>
+      </div>
+
+      <div class="section">
+        <div class="label">Режим</div>
+        <label class="check"><input type="checkbox" id="shuffle" checked /> Перемешать</label>
+        <label class="check"><input type="checkbox" id="hideAnswer" checked /> Сначала скрывать ответы</label>
+      </div>
+
+      <div class="section">
+        <button id="start" class="btn primary">Начать</button>
+        <button id="reset" class="btn">Сброс</button>
+      </div>
+
+      <div class="section stats">
+        <div class="stat">
+          <div class="k">Вопрос</div>
+          <div class="v" id="statIndex">—</div>
+        </div>
+        <div class="stat">
+          <div class="k">Правильно</div>
+          <div class="v" id="statGood">0</div>
+        </div>
+        <div class="stat">
+          <div class="k">Ошибки</div>
+          <div class="v" id="statBad">0</div>
+        </div>
+      </div>
+    </aside>
+
+    <section class="content">
+      <div id="quizView" class="glass card">
+        <div class="cardTop">
+          <div class="pill" id="pillMeta">—</div>
+          <div class="progressWrap">
+            <div class="progressBar"><div id="progress"></div></div>
+            <div class="progressText" id="progressText">—</div>
+          </div>
+        </div>
+
+        <h1 class="q" id="qText">Нажми “Начать”</h1>
+
+        <div id="imgWrap" class="imgWrap hidden">
+          <img id="qImg" alt="Картинка к вопросу" />
+        </div>
+
+        <div class="answerWrap">
+          <div class="answerHead">
+            <div class="label">Ответ</div>
+            <button id="toggleAnswer" class="btn small">Показать</button>
+          </div>
+          <div class="answerText" id="aText">—</div>
+        </div>
+
+        <div class="actions">
+          <button id="btnBad" class="btn danger">Не знаю</button>
+          <button id="btnGood" class="btn success">Знаю</button>
+          <button id="btnOpenPage" class="btn">Открыть страницу из файла</button>
+        </div>
+
+        <div id="pageModal" class="modal hidden" role="dialog" aria-modal="true">
+          <div class="modalInner glass">
+            <div class="modalTop">
+              <div class="label" id="modalTitle">Страница</div>
+              <button id="closeModal" class="btn small">Закрыть</button>
+            </div>
+            <img id="pageImg" class="pageImg" alt="Страница из файла" />
+          </div>
+        </div>
+      </div>
+
+      <div id="pagesView" class="glass card hidden">
+        <div class="pagesHeader">
+          <div>
+            <div class="label">Оригинал (все страницы)</div>
+            <div class="hint">Листай и увеличивай. Это 1-в-1 содержимое файла, со всеми схемами/графиками.</div>
+          </div>
+        </div>
+        <div class="pagesGrid" id="pagesGrid"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
